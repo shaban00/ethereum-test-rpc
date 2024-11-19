@@ -1,0 +1,17 @@
+services:
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    container_name: ganache-cli
+    ports:
+      - "8545:8545"
+    environment:
+      - NETWORK_ID=1337
+      - DEFAULT_ACCOUNT_BALANCE=1000000000000000000000
+    volumes:
+      - ganache-data:/root/.ganache
+    command: --host 0.0.0.0 --port 8545 --deterministic
+    restart: always
+
+volumes:
+  ganache-data:
+    driver: local
